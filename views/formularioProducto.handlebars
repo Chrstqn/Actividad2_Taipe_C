@@ -1,0 +1,23 @@
+<h1>Agregar Nuevo Producto</h1>
+
+<form action="/guardar" method="POST" enctype="multipart/form-data">
+    <div>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+    </div>
+    <div>
+        <label>Precio:</label>
+        <input type="number" name="precio" required>
+    </div>
+    <div>
+        <label>Descripción:</label>
+        <textarea name="descripcion" required></textarea>
+    </div>
+    <div>
+        <label>Imagen del producto (Máx 2MB):</label>
+        <input type="file" name="imagen" accept="image/*" required>
+    </div>
+    <button type="submit">Guardar en Inventario</button>
+</form>
+
+<a href="/">Volver al listado</a>

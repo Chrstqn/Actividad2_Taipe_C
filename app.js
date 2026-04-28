@@ -1,27 +1,29 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { engine } = require('express-handlebars');
+const path = require('path');
 require('dotenv').config();
 
-const app = express();
+const app = express(); 
 
-// Middlewares: Preparación para recibir datos
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public')); // Para archivos CSS e imágenes
+app.use(express.static('public')); 
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
-// Configuración de la base de datos
-const URL_DB = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/mi_inventario';
+const productoRoutes = require('./routes/productoRoutes');
+app.use('/', productoRoutes);
 
+const URL_DB = process.env.URL_DB || "mongodb://127.0.0.1:27017/MiInventarioExpress";
 mongoose.connect(URL_DB)
-    .then(() => console.log('✅ Conexión a la base de datos exitosa'))
-    .catch(error => console.error('❌ Error al conectar a la base de datos:', error));
+    .then(() => console.log('✅ Conectado exitosamente a MongoDB LOCAL'))
+    .catch(err => console.error('❌ Error local:', err));
 
-// Ruta inicial de prueba
-app.get('/', (req, res) => {
-    res.send('El servidor de MiInventarioExpress está activo 🚀');
-});
-
-const PUERTO = process.env.PORT || 3000;
+const PUERTO = process.env.PUERTO || 3000;
 app.listen(PUERTO, () => {
     console.log(`🚀 Servidor funcionando en: http://localhost:${PUERTO}`);
 });

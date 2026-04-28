@@ -20,7 +20,7 @@ const esquemaProducto = new mongoose.Schema({
         default: 'sin-foto.png' 
     }
 }, { 
-    timestamps: true // Crea campos de 'fecha de creación' y 'actualización'
+    timestamps: true
 });
 
 module.exports = mongoose.model('Producto', esquemaProducto);
