@@ -18,11 +18,11 @@
                 <div style="padding: 15px;">
                     <h3 style="margin: 0 0 10px 0; font-size: 1.2em; color: #333;">{{this.nombre}}</h3>
                     <p style="margin: 0 0 10px 0; color: #28a745; font-weight: bold; font-size: 1.1em;">${{this.precio}}</p>
-                    <p style="margin: 0 0 15px 0; font-size: 0.9em; color: #666; height: 40px; overflow: hidden;">{{this.descripcion}}</p>
-                    
-                    <div style="border-top: 1px solid #eee; padding-top: 10px; display: flex; justify-content: space-between;">
-                        <a href="/editar/{{this._id}}" style="color: #ffc107; text-decoration: none; font-weight: bold; font-size: 0.9em;">✏️ Editar</a>
-                        <a href="/eliminar/{{this._id}}" style="color: #dc3545; text-decoration: none; font-weight: bold; font-size: 0.9em;" onclick="return confirm('¿Estás seguro de eliminar este producto?')">🗑️ Eliminar</a>
+                    <div style="margin: 0 0 15px 0; font-size: 0.9em; color: #666; height: 60px; overflow-y: auto; padding-right: 5px; border-bottom: 1px solid #f0f0f0;">{{this.descripcion}}
+                        <div style="border-top: 1px solid #eee; padding-top: 10px; display: flex; justify-content: space-between;">
+                             <a href="/editar/{{this._id}}" style="color: #ffc107; text-decoration: none; font-weight: bold; font-size: 0.9em;">✏️ Editar</a>
+                             <a href="/eliminar/{{this._id}}" style="color: #dc3545; text-decoration: none; font-weight: bold; font-size: 0.9em;" onclick="return confirm('¿Estás seguro de eliminar este producto?')">🗑️ Eliminar</a>
+                        </div>
                     </div>
                 </div>
             </div>
