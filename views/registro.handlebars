@@ -1,0 +1,28 @@
+<div style="max-width: 400px; margin: 50px auto; border: 1px solid #ccc; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: sans-serif;">
+    <h1 style="text-align: center; color: #333;">Registro de Usuario</h1>
+
+    <form action="/registro" method="POST">
+        <div style="margin-bottom: 15px;">
+            <label>Nombre Completo:</label><br>
+            <input type="text" name="nombre" placeholder="Tu nombre" required style="width: 100%; padding: 8px; box-sizing: border-box; border-radius: 4px; border: 1px solid #ccc;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label>Correo electrónico:</label><br>
+            <input type="email" name="correo" placeholder="Email" required style="width: 100%; padding: 8px; box-sizing: border-box; border-radius: 4px; border: 1px solid #ccc;">
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label>Contraseña:</label><br>
+            <input type="password" name="password" placeholder="Contraseña" required style="width: 100%; padding: 8px; box-sizing: border-box; border-radius: 4px; border: 1px solid #ccc;">
+        </div>
+
+        <button type="submit" style="width: 100%; background: #007bff; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            Crear Cuenta
+        </button>
+    </form>
+    
+    <p style="margin-top: 15px; text-align: center;">
+        ¿Ya tienes cuenta? <a href="/login" style="color: #007bff; text-decoration: none;">Inicia sesión aquí</a>
+    </p>
+</div>

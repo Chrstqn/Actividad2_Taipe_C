@@ -1,0 +1,24 @@
+<div style="max-width: 400px; margin: 50px auto; border: 1px solid #ccc; padding: 20px; border-radius: 10px;">
+    <h1>Iniciar Sesión</h1>
+
+    {{#if error}}
+        <p style="color: red; background: #ffeeee; padding: 10px; border-radius: 5px;">{{error}}</p>
+    {{/if}}
+
+    <form action="/login" method="POST">
+        <div style="margin-bottom: 15px;">
+            <label>Correo electrónico:</label><br>
+            <input type="email" name="correo" required style="width: 100%;">
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <label>Contraseña:</label><br>
+            <input type="password" name="password" required style="width: 100%;">
+        </div>
+
+        <button type="submit" style="width: 100%; background: #28a745; color: white; border: none; padding: 10px; cursor: pointer;">
+            Entrar al Sistema
+        </button>
+    </form>
+    <p style="margin-top: 15px;">¿No tienes cuenta? <a href="/registro">Regístrate aquí</a></p>
+</div>
