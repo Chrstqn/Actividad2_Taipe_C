@@ -1,23 +1,44 @@
-<h1>Agregar Nuevo Producto</h1>
+<div style="max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <h1 style="text-align: center; color: #333; margin-bottom: 25px; font-size: 1.8em;">Agregar Nuevo Producto</h1>
 
-<form action="/guardar" method="POST" enctype="multipart/form-data">
-    <div>
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
-    </div>
-    <div>
-        <label>Precio:</label>
-        <input type="number" name="precio" required>
-    </div>
-    <div>
-        <label>Descripción:</label>
-        <textarea name="descripcion" required></textarea>
-    </div>
-    <div>
-        <label>Imagen del producto (Máx 2MB):</label>
-        <input type="file" name="imagen" accept="image/*" required>
-    </div>
-    <button type="submit">Guardar en Inventario</button>
-</form>
+    {{#if error}}
+        <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 6px; margin-bottom: 20px; text-align: center; border: 1px solid #f5c6cb;">
+            {{error}}
+        </div>
+    {{/if}}
 
-<a href="/">Volver al listado</a>
+    <form action="/guardar" method="POST" enctype="multipart/form-data">
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Nombre:</label>
+            <input type="text" name="nombre" required placeholder="Ej. Medalla Personalizada"
+                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Precio ($):</label>
+            <input type="number" name="precio" step="0.01" min="0.1" required placeholder="0.00"
+                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Descripción:</label>
+            <textarea name="descripcion" rows="4" required placeholder="Describe los detalles del producto..."
+                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; resize: vertical;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Imagen del producto (Máx 2MB):</label>
+            <input type="file" name="imagen" accept="image/*" required
+                style="width: 100%; font-size: 0.9em; padding-top: 5px;">
+        </div>
+
+        <button type="submit" 
+            style="width: 100%; background-color: #007bff; color: white; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1.1em; transition: background 0.3s;">
+            Guardar en Inventario
+        </button>
+    </form>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/" style="color: #6c757d; text-decoration: none; font-size: 0.9em; font-weight: 600;">← Volver al listado</a>
+    </div>
+</div>
