@@ -3,6 +3,11 @@ const router = express.Router();
 const Producto = require('../models/Producto');
 const upload = require('../config/multerConfig');
 
+router.get('/', async (req, res) => {
+    const productos = await Producto.find().lean();
+    res.render('home', { productos });
+});
+
 router.get('/nuevo', (req, res) => {
     res.render('formularioProducto');
 });
@@ -10,6 +15,12 @@ router.get('/nuevo', (req, res) => {
 router.post('/guardar', upload.single('imagen'), async (req, res) => {
     try {
         const { nombre, precio, descripcion } = req.body;
+
+        if (!nombre || precio <= 0) {
+            return res.render('formularioProducto', { 
+                error: 'El nombre es obligatorio y el precio debe ser mayor a 0' 
+            });
+        }
         
         const nuevoProducto = new Producto({
             nombre,
@@ -19,17 +30,18 @@ router.post('/guardar', upload.single('imagen'), async (req, res) => {
         });
 
         await nuevoProducto.save();
-        console.log('✅ Producto guardado');
+
+        const io = req.app.get('socketio');
+        if (io) {
+            io.emit('nuevoProducto', { nombre: nuevoProducto.nombre });
+        }
+
+        console.log('✅ Producto guardado y notificado vía Socket');
         res.redirect('/');
     } catch (error) {
         console.error('❌ Error al guardar:', error.message);
         res.status(500).send('Error interno del servidor');
     }
-});
-
-router.get('/', async (req, res) => {
-    const productos = await Producto.find().lean();
-    res.render('home', { productos });
 });
 
 router.get('/eliminar/:id', async (req, res) => {
@@ -54,6 +66,9 @@ router.get('/editar/:id', async (req, res) => {
 router.post('/actualizar/:id', upload.single('imagen'), async (req, res) => {
     try {
         const { nombre, precio, descripcion } = req.body;
+        
+        if (!nombre || precio <= 0) return res.status(400).send('Datos inválidos');
+
         const updateData = { nombre, precio, descripcion };
 
         if (req.file) {

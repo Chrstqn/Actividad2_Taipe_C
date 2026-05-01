@@ -1,0 +1,42 @@
+<div style="max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; color: #333; margin-bottom: 25px;">Editar Producto</h2>
+
+    <form action="/actualizar/{{producto._id}}" method="POST" enctype="multipart/form-data">
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Nombre del Producto:</label>
+            <input type="text" name="nombre" value="{{producto.nombre}}" required 
+                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Precio ($):</label>
+            <input type="number" name="precio" value="{{producto.precio}}" step="0.01" min="0.1" required 
+                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Descripción:</label>
+            <textarea name="descripcion" rows="4" required 
+                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; resize: vertical;">{{producto.descripcion}}</textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Cambiar Imagen (opcional):</label>
+            <input type="file" name="imagen" accept="image/*" 
+                style="width: 100%; font-size: 0.9em;">
+            <p style="font-size: 0.8em; color: #888; margin-top: 5px;">Imagen actual: {{producto.imagen}}</p>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <button type="submit" 
+                style="flex: 2; background-color: #28a745; color: white; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                Guardar Cambios
+            </button>
+            <a href="/" 
+                style="flex: 1; text-align: center; background-color: #6c757d; color: white; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: 600;">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>

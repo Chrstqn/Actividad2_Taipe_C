@@ -54,6 +54,31 @@ Este proyecto es una aplicación web desarrollada para la asignatura de **Aplica
 1. Bcryptjs: Implementación de seguridad para proteger los datos sensibles del usuario.
 2. Express-session: Control de persistencia de login y manejo de cookies de sesión.
 
+### Actualización Final - 01/05
+**Cierre de Proyecto y Funcionalidades Avanzadas**
+  Seguridad y Autenticación:
+1. Registro e Inicio de Sesión: Implementación de flujo completo de usuarios con almacenamiento en MongoDB.
+2. Gestión de Sesiones: Uso de express-session para proteger rutas privadas; solo usuarios autenticados pueden gestionar el inventario.
+3. Hashing de Claves: Encriptación de contraseñas mediante bcryptjs para máxima seguridad de datos.
+
+  CRUD de Productos Optimizado:
+1. Edición y Actualización: Interfaz para modificar datos existentes y actualización dinámica en la base de datos.
+2. Eliminación Segura: Funcionalidad para remover productos del inventario vinculados por ID.
+3. Validación de Entradas: Control estricto en el backend para evitar precios negativos o campos vacíos, asegurando la integridad de la base de datos.
+
+  Comunicación en Tiempo Real (Socket.io):
+1. Notificaciones Instantáneas: Integración de WebSockets para alertar a todos los clientes conectados cuando se añade un nuevo producto al inventario, cumpliendo con el requisito de interactividad.
+
+**Nuevas Tecnologías Incorporadas**
+1. Socket.io: Protocolo de comunicación bidireccional basada en eventos.
+2. Bcryptjs: Librería de hashing para seguridad de contraseñas.
+3. Express-session: Middleware para manejo de sesiones de usuario.
+
+### Instrucciones de Uso (Cierre)
+- Instalación: Ejecutar npm install para descargar las nuevas librerías (socket.io, bcryptjs, express-session).
+- Variables de Entorno: Asegurarse de que el archivo .env contenga la cadena de conexión local a MongoDB.
+- Ejecución: Iniciar el servidor con node app.js. El sistema notificará vía consola la conexión exitosa tanto a la base de datos como al servidor de Sockets.
+
 ### Nota de Desarrollo
 - Infraestructura: El servidor se ejecuta en localhost debido a restricciones de red (DNS/Firewall) que impiden la conexión estable con MongoDB Atlas. Se optó por persistencia local para asegurar el cumplimiento de la entrega.
 - Control de Acceso: Se ha implementado la lógica de autenticación completa. Las rutas de gestión de productos ahora requieren una sesión activa para garantizar que solo usuarios registrados puedan modificar el inventario.
