@@ -82,3 +82,6 @@ Este proyecto es una aplicación web desarrollada para la asignatura de **Aplica
 ### Nota de Desarrollo
 - Infraestructura: El servidor se ejecuta en localhost debido a restricciones de red (DNS/Firewall) que impiden la conexión estable con MongoDB Atlas. Se optó por persistencia local para asegurar el cumplimiento de la entrega.
 - Control de Acceso: Se ha implementado la lógica de autenticación completa. Las rutas de gestión de productos ahora requieren una sesión activa para garantizar que solo usuarios registrados puedan modificar el inventario.
+
+### URL del repositorio GITHUB
+- https://github.com/Chrstqn/Actividad2_Taipe_C.git
